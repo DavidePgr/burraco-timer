@@ -3,7 +3,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Burraco Timer">
+<meta name="application-name" content="Burraco Timer">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
 <link rel="apple-touch-icon" href="assets/images/icon.png">
@@ -44,6 +46,12 @@
   transition: width 0.1s linear;
   border-radius: 5px;
 }
+#fastTickingColck {
+  display: none;
+}
+#alarm {
+  display: none;
+}
 .prevent-select {
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -52,6 +60,9 @@
 </style>
 </head>
 <body>
+
+<audio id="fastTickingColck" src="assets/audio/fastTickingColck.mp3"></audio>
+<audio id="alarm" src="assets/audio/alarm.mp3"></audio>
 
 <p class="prevent-select" id="timer">30</p>
 
@@ -68,6 +79,12 @@
     seconds -= 0.1;
     document.getElementById("progress").style.width = (seconds / progressBarSeconds) * 100 + "%";
     
+    if (seconds < 10.0) {
+      document.getElementById("timer").innerHTML = seconds.toFixed(1);
+    } else {
+      document.getElementById("timer").innerHTML = Math.floor(seconds);
+    }
+    
     if (seconds > 16.0) {
       document.getElementById("timer").style.backgroundColor = "#8EFA00";
     }
@@ -76,15 +93,15 @@
     }
     if (seconds < 11.0) {
       document.getElementById("timer").style.backgroundColor = "#FF2600";
-    }
-    if (seconds < 10.0) {
-      document.getElementById("timer").innerHTML = seconds.toFixed(1);
-    } else {
-      document.getElementById("timer").innerHTML = Math.floor(seconds);
+      document.getElementById("fastTickingColck").play();
     }
     if (seconds <= 0) {
       document.getElementById("progress").style.width = "0%";
       document.getElementById("timer").innerHTML = "0.0";
+      document.getElementById("fastTickingColck").pause();
+      if (seconds > -1) {
+        document.getElementById("alarm").play();
+      }
     }
   }
   function countdownPlus() {
@@ -100,6 +117,10 @@
       seconds = 30.9;
       progressBarSeconds = 30.9;
       interval = setInterval(countdown, 100);
+      document.getElementById("fastTickingColck").pause();
+      document.getElementById("alarm").pause();
+      document.getElementById("fastTickingColck").currentTime = 0;
+      document.getElementById("alarm").currentTime = 0;
     } else {
       if (seconds <= -3.0) {
         if (interval) {
@@ -108,10 +129,15 @@
         seconds = 30.9;
         progressBarSeconds = 30.9;
         interval = setInterval(countdown, 100);
+        document.getElementById("fastTickingColck").pause();
+        document.getElementById("alarm").pause();
+        document.getElementById("fastTickingColck").currentTime = 0;
+        document.getElementById("alarm").currentTime = 0;
       } else {
       }
     }
   });
+
   document.body.addEventListener("keydown", function(event) {
   if (event.key === " " || event.key === "Enter") {
     if (seconds > 0.0) {
@@ -121,6 +147,10 @@
       seconds = 30.9;
       progressBarSeconds = 30.9;
       interval = setInterval(countdown, 100);
+      document.getElementById("fastTickingColck").pause();
+      document.getElementById("alarm").pause();
+      document.getElementById("fastTickingColck").currentTime = 0;
+      document.getElementById("alarm").currentTime = 0;
     } else {
       if (seconds <= -3.0) {
         if (interval) {
@@ -129,6 +159,10 @@
         seconds = 30.9;
         progressBarSeconds = 30.9;
         interval = setInterval(countdown, 100);
+        document.getElementById("fastTickingColck").pause();
+        document.getElementById("alarm").pause();
+        document.getElementById("fastTickingColck").currentTime = 0;
+        document.getElementById("alarm").currentTime = 0;
       } else {
       }
     }

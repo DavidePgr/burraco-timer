@@ -62,8 +62,7 @@
 <body>
 
 <audio id="fastTickingClock" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
-<audio id="alarm" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3" webkit-playsinline></audio>
-<audio id="empty" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
+<audio id="alarm" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
 
 <p class="prevent-select" id="timer">30</p>
 
@@ -113,6 +112,8 @@
   document.body.addEventListener("click", function() {
     document.getElementById("fastTickingClock").play();
     document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+    document.getElementById("alarm").play();
+    document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
     if (seconds > 0.0) {
       if (interval) {
       clearInterval(interval);

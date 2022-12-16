@@ -1,16 +1,20 @@
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<style>
+
+</style>
+
 </head>
 <body>
-    <h1>Intro</h1>
-<p>With HTML5 it's pretty straight-forward to play a sound from a javascript function. However, iOS does not always allow that. Safari on iOS only plays sounds from functions that are directly called from user interactions, like a button click. The solution to that is using the web audio API. This is still not straight-forward though. In order to play a sound programmatically on iOS Safari, the so-called audio context needs to be unlocked first. That unlocking has to be done, again, by playing a sound as a reaction to user interaction. Luckily, the audio context can be unlocked once and then forever be used to play sounds. So any touch event on the screen can be used for that. Or, as in this example, by pressing the unmute button. If you don't see an unmute button: you're lucky. You're using a browser that doesn't require unlocking!</p>
-<h1>Demo</h1>
-<p>If you are on iOS, then you should not hear any sounds playing yet and initially there should be an unmute button here:</p>
-<button id="unmute">Unmute</button>
-<p>If it is hidden, the audio context is unlocked and a sound is playing.</p>
-<p>Manually starting a sound to play should always work in all browsers with web audio:</p>
-<button id="play">Play</button>
-    <script src="script.js"></script>
+    <audio id="fastTickingClock" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3" webkit-playsinline></audio>
+    <audio id="alarm" src="assets/audio/alarm.mp3" webkit-playsinline></audio>
+    <button id="playB">Test</button>
+<script>
+document.getElementById("playB").addEventListener("click", playF);
+
+function playF() {
+  document.getElementById("fastTickingClock").play();
+}
+</script>
 </body>
 </html>

@@ -11,28 +11,40 @@
 <link rel="apple-touch-icon" href="assets/images/icon.png">
 <title>Burraco Timer</title>
 <style>
-  html, body {
+  @font-face {
+    font-family: "digital";
+    src: url("https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/fonts/digital.otf") format("opentype");
+  }
+  @font-face {
+    font-family: "digitalBold";
+    src: url("https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/fonts/digitalBold.otf") format("opentype");
+  }
+  #body {
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #8EFA00;
   }
   #timer {
-    font-family: 'Roboto Mono', monospace;
-    font-weight: 500;
-    font-size: 75vh;
+    font-family: "digitalBold", "Roboto Mono", monospace;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 75vmin;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
-    background-color: #8EFA00;
+    position: fixed;
+    
   }
   #progress-bar {
   position: fixed;
-  bottom: 10;
-  left: 10;
-  height: 10px;
+  bottom: 10vmin;
+  left: 10vmin;
+  height: 5px;
   width: 50%;
   background-color: #0000001c;
   border-radius: 5px;
@@ -59,7 +71,7 @@
 }
 </style>
 </head>
-<body>
+<body id="body">
 
 <audio id="fastTickingClock" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
 <audio id="alarm" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
@@ -71,6 +83,7 @@
 </div>
 
 <script>
+  var firstAudioSwitch = true;
   var seconds = 30.9;
   var interval;
   var progressBarSeconds = 30.9;
@@ -79,23 +92,23 @@
     seconds -= 0.1;
     document.getElementById("progress").style.width = (seconds / progressBarSeconds) * 100 + "%";
     
-    if (seconds < 10.0) {
+    if (seconds <= 9.9) {
       document.getElementById("timer").innerHTML = seconds.toFixed(1);
     } else {
       document.getElementById("timer").innerHTML = Math.floor(seconds);
     }
     
     if (seconds > 16.0) {
-      document.getElementById("timer").style.backgroundColor = "#8EFA00";
+      document.body.style.backgroundColor = "8EFA00";
     }
     if (seconds < 16.0) {
-      document.getElementById("timer").style.backgroundColor = "#FF9300";
+      document.body.style.backgroundColor = "FF9300";
     }
     if (seconds < 11.0) {
-      document.getElementById("timer").style.backgroundColor = "#FF2600";
+      document.body.style.backgroundColor = "FF2600";
       document.getElementById("fastTickingClock").play();
     }
-    if (seconds <= 0) {
+    if (seconds < 0) {
       document.getElementById("progress").style.width = "0%";
       document.getElementById("timer").innerHTML = "0.0";
       document.getElementById("fastTickingClock").pause();
@@ -104,16 +117,16 @@
       }
     }
   }
-  function countdownPlus() {
-    seconds += 30;
-    progressBarSeconds += 30;
-  }
   
   document.body.addEventListener("click", function() {
-    document.getElementById("fastTickingClock").play();
-    document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
-    document.getElementById("alarm").play();
-    document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
+    if (firstAudioSwitch) {
+      firstAudioSwitch = false;
+      document.getElementById("fastTickingClock").play();
+      document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+      document.getElementById("alarm").play();
+      document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
+    }
+
     if (seconds > 0.0) {
       if (interval) {
       clearInterval(interval);
@@ -143,6 +156,14 @@
   });
 
   document.body.addEventListener("keydown", function(event) {
+    if (firstAudioSwitch) {
+      firstAudioSwitch = false;
+      document.getElementById("fastTickingClock").play();
+      document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+      document.getElementById("alarm").play();
+      document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
+    }
+
   if (event.key === " " || event.key === "Enter") {
     if (seconds > 0.0) {
       if (interval) {

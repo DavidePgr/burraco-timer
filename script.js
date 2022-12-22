@@ -172,7 +172,7 @@ if (event.key === " " || event.key === "Enter") {
 }
 });
 
-body.addEventListener('touchstart', (event) => {
+body.addEventListener("touchstart", (event) => {
   if (event.touches.length === 2) {
     gestureStartTime = new Date().getTime();
 
@@ -189,7 +189,7 @@ body.addEventListener('touchstart', (event) => {
         document.getElementById("progress").style.width = "100%";
         document.body.style.backgroundColor = "8EFA00";
         document.getElementById("fastTickingClock").pause();
-        enableSixtySecondsButton();
+        disableSixtySecondsButton();
       }
     }, 2000);
   }

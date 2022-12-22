@@ -1,48 +1,67 @@
 var firstAudioSwitch = true;
-  var seconds = 30.9;
-  var interval;
-  var progressBarSeconds = 30.9;
+var seconds = 30.9;
+var interval;
+var progressBarSeconds = 30.9;
+let gestureStartTime;
   
-  function countdown() {
-    seconds -= 0.1;
-    document.getElementById("progress").style.width = (seconds / progressBarSeconds) * 100 + "%";
-    
-    if (seconds <= 9.9) {
-      document.getElementById("timer").innerHTML = seconds.toFixed(1);
-    } else {
-      document.getElementById("timer").innerHTML = Math.floor(seconds);
-    }
-    
-    if (seconds > 16.0) {
-      document.body.style.backgroundColor = "8EFA00";
-    }
-    if (seconds < 16.0) {
-      document.body.style.backgroundColor = "FF9300";
-    }
-    if (seconds < 11.0) {
-      document.body.style.backgroundColor = "FF2600";
-      document.getElementById("fastTickingClock").play();
-    }
-    if (seconds < 0) {
-      document.getElementById("progress").style.width = "0%";
-      document.getElementById("timer").innerHTML = "0.0";
-      document.getElementById("fastTickingClock").pause();
-      if (seconds > -1) {
-        document.getElementById("alarm").play();
-      }
-    }
+function countdown() {
+  seconds -= 0.1;
+  document.getElementById("progress").style.width = (seconds / progressBarSeconds) * 100 + "%";
+  console.log(seconds);
+  
+  if (seconds <= 9.9) {
+    document.getElementById("timer").innerHTML = seconds.toFixed(1);
+  } else {
+    document.getElementById("timer").innerHTML = Math.floor(seconds);
   }
   
-  document.body.addEventListener("click", function() {
-    if (firstAudioSwitch) {
-      firstAudioSwitch = false;
-      document.getElementById("fastTickingClock").play();
-      document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+  if (seconds > 16.0) {
+    document.body.style.backgroundColor = "8EFA00";
+  }
+  if (seconds < 16.0) {
+    document.body.style.backgroundColor = "FF9300";
+  }
+  if (seconds < 11.0) {
+    document.body.style.backgroundColor = "FF2600";
+    document.getElementById("fastTickingClock").play();
+  }
+  if (seconds < 0) {
+    document.getElementById("progress").style.width = "0%";
+    document.getElementById("timer").innerHTML = "0.0";
+    document.getElementById("fastTickingClock").pause();
+    disableSixtySecondsButton();
+    if (seconds > -1) {
       document.getElementById("alarm").play();
-      document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
     }
+  }
+  if (seconds < -5.0) {
+    clearInterval(interval);
+  }
+}
 
-    if (seconds > 0.0) {
+document.body.addEventListener("touchstart", function() {
+  if (firstAudioSwitch) {
+    firstAudioSwitch = false;
+    document.getElementById("fastTickingClock").play();
+    document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+    document.getElementById("alarm").play();
+    document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
+  }
+
+  if (seconds > 0.0) {
+    if (interval) {
+    clearInterval(interval);
+    }
+    seconds = 30.9;
+    progressBarSeconds = 30.9;
+    interval = setInterval(countdown, 100);
+    document.getElementById("fastTickingClock").pause();
+    document.getElementById("alarm").pause();
+    document.getElementById("fastTickingClock").currentTime = 0;
+    document.getElementById("alarm").currentTime = 0;
+    enableSixtySecondsButton();
+  } else {
+    if (seconds <= -3.0) {
       if (interval) {
       clearInterval(interval);
       }
@@ -53,58 +72,144 @@ var firstAudioSwitch = true;
       document.getElementById("alarm").pause();
       document.getElementById("fastTickingClock").currentTime = 0;
       document.getElementById("alarm").currentTime = 0;
+      enableSixtySecondsButton();
     } else {
-      if (seconds <= -3.0) {
-        if (interval) {
-        clearInterval(interval);
-        }
-        seconds = 30.9;
-        progressBarSeconds = 30.9;
-        interval = setInterval(countdown, 100);
-        document.getElementById("fastTickingClock").pause();
-        document.getElementById("alarm").pause();
-        document.getElementById("fastTickingClock").currentTime = 0;
-        document.getElementById("alarm").currentTime = 0;
-      } else {
-      }
-    }
-  });
-
-  document.body.addEventListener("keydown", function(event) {
-    if (firstAudioSwitch) {
-      firstAudioSwitch = false;
-      document.getElementById("fastTickingClock").play();
-      document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
-      document.getElementById("alarm").play();
-      document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
-    }
-
-  if (event.key === " " || event.key === "Enter") {
-    if (seconds > 0.0) {
-      if (interval) {
-      clearInterval(interval);
-      }
-      seconds = 30.9;
-      progressBarSeconds = 30.9;
-      interval = setInterval(countdown, 100);
-      document.getElementById("fastTickingClock").pause();
-      document.getElementById("alarm").pause();
-      document.getElementById("fastTickingClock").currentTime = 0;
-      document.getElementById("alarm").currentTime = 0;
-    } else {
-      if (seconds <= -3.0) {
-        if (interval) {
-        clearInterval(interval);
-        }
-        seconds = 30.9;
-        progressBarSeconds = 30.9;
-        interval = setInterval(countdown, 100);
-        document.getElementById("fastTickingClock").pause();
-        document.getElementById("alarm").pause();
-        document.getElementById("fastTickingClock").currentTime = 0;
-        document.getElementById("alarm").currentTime = 0;
-      } else {
-      }
     }
   }
 });
+
+document.body.addEventListener("mouseup", function() {
+  if (firstAudioSwitch) {
+    firstAudioSwitch = false;
+    document.getElementById("fastTickingClock").play();
+    document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+    document.getElementById("alarm").play();
+    document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
+  }
+
+  if (seconds > 0.0) {
+    if (interval) {
+    clearInterval(interval);
+    }
+    seconds = 30.9;
+    progressBarSeconds = 30.9;
+    interval = setInterval(countdown, 100);
+    document.getElementById("fastTickingClock").pause();
+    document.getElementById("alarm").pause();
+    document.getElementById("fastTickingClock").currentTime = 0;
+    document.getElementById("alarm").currentTime = 0;
+    enableSixtySecondsButton();
+  } else {
+    if (seconds <= -3.0) {
+      if (interval) {
+      clearInterval(interval);
+      }
+      seconds = 30.9;
+      progressBarSeconds = 30.9;
+      interval = setInterval(countdown, 100);
+      document.getElementById("fastTickingClock").pause();
+      document.getElementById("alarm").pause();
+      document.getElementById("fastTickingClock").currentTime = 0;
+      document.getElementById("alarm").currentTime = 0;
+      enableSixtySecondsButton();
+    } else {
+    }
+  }
+});
+
+document.body.addEventListener("keydown", function(event) {
+if (event.key === " " || event.key === "Enter") {
+  if (firstAudioSwitch) {
+    firstAudioSwitch = false;
+    document.getElementById("fastTickingClock").play();
+    document.getElementById("fastTickingClock").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/fastTickingClock.mp3";
+    document.getElementById("alarm").play();
+    document.getElementById("alarm").src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/alarm.mp3";
+  }
+  if (seconds > 0.0) {
+    if (interval) {
+    clearInterval(interval);
+    }
+    seconds = 30.9;
+    progressBarSeconds = 30.9;
+    interval = setInterval(countdown, 100);
+    document.getElementById("fastTickingClock").pause();
+    document.getElementById("alarm").pause();
+    document.getElementById("fastTickingClock").currentTime = 0;
+    document.getElementById("alarm").currentTime = 0;
+    enableSixtySecondsButton();
+  } else {
+    if (seconds <= -3.0) {
+      if (interval) {
+      clearInterval(interval);
+      }
+      seconds = 30.9;
+      progressBarSeconds = 30.9;
+      interval = setInterval(countdown, 100);
+      document.getElementById("fastTickingClock").pause();
+      document.getElementById("alarm").pause();
+      document.getElementById("fastTickingClock").currentTime = 0;
+      document.getElementById("alarm").currentTime = 0;
+      enableSixtySecondsButton();
+    } else {
+    }
+  }
+} else if (event.key === "Escape") {
+  clearInterval(interval);
+  seconds = 30.9;
+  progressBarSeconds = 30.9;
+  document.getElementById("timer").innerHTML = "30";
+  document.getElementById("progress").style.width = "100%";
+  document.body.style.backgroundColor = "8EFA00";
+  document.getElementById("fastTickingClock").pause();
+  disableSixtySecondsButton();
+} else if (event.key === "p") {
+  if (document.getElementById("sixtySecondsDiv").style.pointerEvents === "all") {
+    seconds = 60.9;
+    progressBarSeconds = 60.9;
+    disableSixtySecondsButton();
+  }
+}
+});
+
+body.addEventListener('touchstart', (event) => {
+  if (event.touches.length === 2) {
+    gestureStartTime = new Date().getTime();
+
+    const gestureInterval = setInterval(() => {
+      const currentTime = new Date().getTime();
+      const gestureDuration = currentTime - gestureStartTime;
+
+      if (gestureDuration >= 2000) {
+        clearInterval(gestureInterval);
+        clearInterval(interval);
+        seconds = 30.9;
+        progressBarSeconds = 30.9;
+        document.getElementById("timer").innerHTML = "30";
+        document.getElementById("progress").style.width = "100%";
+        document.body.style.backgroundColor = "8EFA00";
+        document.getElementById("fastTickingClock").pause();
+        enableSixtySecondsButton();
+      }
+    }, 2000);
+  }
+});
+
+document.getElementById("sixtySecondsDiv").addEventListener("click", function (event) {
+  event.stopPropagation();
+  seconds = 60.9;
+  progressBarSeconds = 60.9;
+  disableSixtySecondsButton();
+});
+
+function enableSixtySecondsButton() {
+  document.getElementById("sixtySecondsDiv").style.background = "#000000";
+  document.getElementById("sixtySecondsDiv").style.color = "#ffffff";
+  document.getElementById("sixtySecondsDiv").style.pointerEvents = "all";
+}
+
+function disableSixtySecondsButton() {
+  document.getElementById("sixtySecondsDiv").style.background = "#00000025";
+  document.getElementById("sixtySecondsDiv").style.color = "#00000040";
+  document.getElementById("sixtySecondsDiv").style.pointerEvents = "none";
+}

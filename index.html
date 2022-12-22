@@ -6,8 +6,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Burraco Timer">
 <meta name="application-name" content="Burraco Timer">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, orientation=landscape">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link rel="apple-touch-icon" href="assets/images/icon.png">
 <title>Burraco Timer</title>
 <link rel="stylesheet" href="style.css">
@@ -18,7 +18,11 @@
 <audio id="fastTickingClock" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
 <audio id="alarm" src="https://raw.githubusercontent.com/davidepgr/burraco-timer/main/assets/audio/empty.mp3" webkit-playsinline></audio>
 
-<p class="prevent-select" id="timer">30</p>
+<div class="sixtySecondsDiv" id="sixtySecondsDiv">
+  <p id="sixtySecondsButton">Pozzetto al volo</p>
+</div>
+
+<p id="timer">30</p>
 
 <div id="progress-bar">
   <div id="progress"></div>

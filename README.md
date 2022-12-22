@@ -27,7 +27,7 @@ In più dovrebbe anche funzionare meglio :)
 ![iOSTutorialImage3](/assets/readme/iOSTutorialImage3.png)
 * Cliccare su Aggiungi in alto a destra (volendo si può mettere un nome a piacere al posto di _Burraco Timer_)
 ![iOSTutorialImage4](/assets/readme/iOSTutorialImage4.png)
-A questo punto ci sarà una nuova icona sulla schermata Home con l'icona del cronometro chiamata Burraco Timer, se si apre si può vedere che è un'applicazione a parte e separata da Safari.  
+* A questo punto ci sarà una nuova icona sulla schermata Home con l'icona del cronometro chiamata Burraco Timer, se si apre si può vedere che è un'applicazione a parte e separata da Safari.  
 Quindi da adesso in poi basterà aprire questa per usare il timer (potrebbe volerci la connessione internet per aprirla, una volta che è aperta non serve più).
 ![iOSTutorialImage5](/assets/readme/iOSTutorialImage5.png)
 ![iOSTutorialImage5](/assets/readme/iOSTutorialImage6.png)

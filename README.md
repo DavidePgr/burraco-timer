@@ -1,5 +1,5 @@
 # Burraco Timer
-![img1](https://github.com/DavidePgr/burraco-timer/blob/main/assets/readme/discord/thumbinails.png)  
+![img1](/assets/readme/thumbinail.png)  
 
 ## Nuovo sito
 Adesso per giocare a burraco con il timer non serve più avere per forza l'iPad con l'applicazione, basta andare sul sito  
@@ -20,13 +20,14 @@ Per utilizzarlo da un dispositivo mobile basta andare [sul sito](#Nuovo-sito) e 
 Per avere il massimo dal timer su iPhone e su iPad basta seguire questa procedura la prima volta, serve a scaricare l'applicazione sulla schermata home e per avere un'interfaccia pulita solo con il timer.  
 In più dovrebbe anche funzionare meglio :)
 * Aprire il [sito](#Nuovo-sito) da Safari
-![]()
+![iOSTutorialImage1](/assets/readme/iOSTutorialImage1.png)
 * Cliccare sul simbolo della condivisione
-![]()
+![iOSTutorialImage2](/assets/readme/iOSTutorialImage2.png)
 * Nella finestra cliccare su Aggiungi alla schermata Home
-![]()
+![iOSTutorialImage3](/assets/readme/iOSTutorialImage3.png)
 * Cliccare su Aggiungi in alto a destra (volendo si può mettere un nome a piacere al posto di _Burraco Timer_)
-![]()
+![iOSTutorialImage4](/assets/readme/iOSTutorialImage4.png)
+![iOSTutorialImage5](/assets/readme/iOSTutorialImage5.png)
 A questo punto ci sarà una nuova icona sulla schermata Home con l'icona del cronometro chiamata Burraco Timer, se si apre si può vedere che è un'applicazione a parte e separata da Safari.  
 Quindi da adesso in poi basterà aprire questa per usare il timer (potrebbe volerci la connessione internet per aprirla, una volta che è aperta non serve più).
 

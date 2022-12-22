@@ -1,5 +1,5 @@
 # Burraco Timer
-![img1](/assets/readme/thumbinail.png)  
+![img1](/assets/readme/icon.png)  
 
 ## Nuovo sito
 Adesso per giocare a burraco con il timer non serve più avere per forza l'iPad con l'applicazione, basta andare sul sito  

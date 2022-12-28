@@ -1,7 +1,12 @@
+const secondsSetup = 30.9;
+const progressBarSecondsSetup = 30.9;
+const buttonSecondsSetup = 60.9;
+const buttonProgressBarSecondsSetup = 60.9;
+
+var seconds = secondsSetup;
+var progressBarSeconds = progressBarSecondsSetup;
 var firstAudioSwitch = true;
-var seconds = 30.9;
 var interval;
-var progressBarSeconds = 30.9;
 let gestureStartTime;
   
 function countdown() {
@@ -52,8 +57,8 @@ document.body.addEventListener("touchstart", function() {
     if (interval) {
     clearInterval(interval);
     }
-    seconds = 30.9;
-    progressBarSeconds = 30.9;
+    seconds = secondsSetup;
+    progressBarSeconds = progressBarSecondsSetup;
     interval = setInterval(countdown, 100);
     document.getElementById("fastTickingClock").pause();
     document.getElementById("alarm").pause();
@@ -65,8 +70,8 @@ document.body.addEventListener("touchstart", function() {
       if (interval) {
       clearInterval(interval);
       }
-      seconds = 30.9;
-      progressBarSeconds = 30.9;
+      seconds = secondsSetup;
+      progressBarSeconds = progressBarSecondsSetup;
       interval = setInterval(countdown, 100);
       document.getElementById("fastTickingClock").pause();
       document.getElementById("alarm").pause();
@@ -91,8 +96,8 @@ document.body.addEventListener("mouseup", function() {
     if (interval) {
     clearInterval(interval);
     }
-    seconds = 30.9;
-    progressBarSeconds = 30.9;
+    seconds = secondsSetup;
+    progressBarSeconds = progressBarSecondsSetup;
     interval = setInterval(countdown, 100);
     document.getElementById("fastTickingClock").pause();
     document.getElementById("alarm").pause();
@@ -104,8 +109,8 @@ document.body.addEventListener("mouseup", function() {
       if (interval) {
       clearInterval(interval);
       }
-      seconds = 30.9;
-      progressBarSeconds = 30.9;
+      seconds = secondsSetup;
+      progressBarSeconds = progressBarSecondsSetup;
       interval = setInterval(countdown, 100);
       document.getElementById("fastTickingClock").pause();
       document.getElementById("alarm").pause();
@@ -130,8 +135,8 @@ if (event.key === " " || event.key === "Enter") {
     if (interval) {
     clearInterval(interval);
     }
-    seconds = 30.9;
-    progressBarSeconds = 30.9;
+    seconds = secondsSetup;
+    progressBarSeconds = progressBarSecondsSetup;
     interval = setInterval(countdown, 100);
     document.getElementById("fastTickingClock").pause();
     document.getElementById("alarm").pause();
@@ -143,8 +148,8 @@ if (event.key === " " || event.key === "Enter") {
       if (interval) {
       clearInterval(interval);
       }
-      seconds = 30.9;
-      progressBarSeconds = 30.9;
+      seconds = secondsSetup;
+      progressBarSeconds = progressBarSecondsSetup;
       interval = setInterval(countdown, 100);
       document.getElementById("fastTickingClock").pause();
       document.getElementById("alarm").pause();
@@ -156,8 +161,8 @@ if (event.key === " " || event.key === "Enter") {
   }
 } else if (event.key === "Escape") {
   clearInterval(interval);
-  seconds = 30.9;
-  progressBarSeconds = 30.9;
+  seconds = secondsSetup;
+  progressBarSeconds = progressBarSecondsSetup;
   document.getElementById("timer").innerHTML = "30";
   document.getElementById("progress").style.width = "100%";
   document.body.style.backgroundColor = "8EFA00";
@@ -165,8 +170,8 @@ if (event.key === " " || event.key === "Enter") {
   disableSixtySecondsButton();
 } else if (event.key === "p") {
   if (document.getElementById("sixtySecondsDiv").style.pointerEvents === "all") {
-    seconds = 60.9;
-    progressBarSeconds = 60.9;
+    seconds = buttonSecondsSetup;
+    progressBarSeconds = buttonProgressBarSecondsSetup;
     disableSixtySecondsButton();
   }
 }
@@ -183,8 +188,8 @@ body.addEventListener("touchstart", (event) => {
       if (gestureDuration >= 2000) {
         clearInterval(gestureInterval);
         clearInterval(interval);
-        seconds = 30.9;
-        progressBarSeconds = 30.9;
+        seconds = secondsSetup;
+        progressBarSeconds = progressBarSecondsSetup;
         document.getElementById("timer").innerHTML = "30";
         document.getElementById("progress").style.width = "100%";
         document.body.style.backgroundColor = "8EFA00";
@@ -197,8 +202,8 @@ body.addEventListener("touchstart", (event) => {
 
 document.getElementById("sixtySecondsDiv").addEventListener("click", function (event) {
   event.stopPropagation();
-  seconds = 60.9;
-  progressBarSeconds = 60.9;
+  seconds = buttonSecondsSetup;
+  progressBarSeconds = buttonProgressBarSecondsSetup;
   disableSixtySecondsButton();
 });
 

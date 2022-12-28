@@ -19,7 +19,7 @@ Per utilizzarlo da un dispositivo mobile basta andare [sul sito](#Nuovo-sito) e 
 ### iPhone e iPad
 Per avere il massimo dal timer su iPhone e su iPad basta seguire questa procedura la prima volta, serve a scaricare l'applicazione sulla schermata home e per avere un'interfaccia pulita solo con il timer.  
 In più dovrebbe anche funzionare meglio :)
-* Aprire il [sito](#Nuovo-sito) da Safari
+* Aprire il sito da Safari
 ![iOSTutorialImage1](/assets/readme/iOSTutorialImage1.png)
 * Cliccare sul simbolo della condivisione
 ![iOSTutorialImage2](/assets/readme/iOSTutorialImage2.png)
@@ -30,7 +30,7 @@ In più dovrebbe anche funzionare meglio :)
 * A questo punto ci sarà una nuova icona sulla schermata Home con l'icona del cronometro chiamata Burraco Timer, se si apre si può vedere che è un'applicazione a parte e separata da Safari.  
 Quindi da adesso in poi basterà aprire questa per usare il timer (potrebbe volerci la connessione internet per aprirla, una volta che è aperta non serve più).
 ![iOSTutorialImage5](/assets/readme/iOSTutorialImage5.png)
-![iOSTutorialImage5](/assets/readme/iOSTutorialImage6.png)
+![iOSTutorialImage6](/assets/readme/iOSTutorialImage6.png)
 
 ## Desktop
 Se per qualche motivo si volesse utilizzare il timer da desktop, si può fare andando [sul sito](#Nuovo-sito) e utilizzando il mouse o la tastiera:

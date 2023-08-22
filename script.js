@@ -1,4 +1,4 @@
-const secondsSetup = 30.9;
+const secondsSetup = 11.9;
 const progressBarSecondsSetup = 30.9;
 const buttonSecondsSetup = 60.9;
 const buttonProgressBarSecondsSetup = 60.9;
@@ -8,11 +8,14 @@ var progressBarSeconds = progressBarSecondsSetup;
 var firstAudioSwitch = true;
 var interval;
 let gestureStartTime;
+// EDIT
+var fastTickingClock = document.getElementById("fastTickingClock");
+var playbackRate = 1;
+// END EDIT
   
 function countdown() {
   seconds -= 0.1;
   document.getElementById("progress").style.width = (seconds / progressBarSeconds) * 100 + "%";
-  console.log(seconds);
   
   if (seconds <= 9.9) {
     document.getElementById("timer").innerHTML = seconds.toFixed(1);
@@ -29,6 +32,11 @@ function countdown() {
   if (seconds < 11.0) {
     document.body.style.backgroundColor = "FF2600";
     document.getElementById("fastTickingClock").play();
+    // EDIT
+    playbackRate = playbackRate + 0.0025;
+    fastTickingClock.playbackRate = playbackRate;
+    console.log(playbackRate);
+    // END EDIT
   }
   if (seconds < 0) {
     document.getElementById("progress").style.width = "0%";
@@ -57,6 +65,9 @@ document.body.addEventListener("touchstart", function() {
     if (interval) {
     clearInterval(interval);
     }
+    // EDIT
+    playbackRate = 1;
+    // END EDIT
     seconds = secondsSetup;
     progressBarSeconds = progressBarSecondsSetup;
     interval = setInterval(countdown, 100);
@@ -70,6 +81,9 @@ document.body.addEventListener("touchstart", function() {
       if (interval) {
       clearInterval(interval);
       }
+      // EDIT
+      playbackRate = 1;
+      // END EDIT
       seconds = secondsSetup;
       progressBarSeconds = progressBarSecondsSetup;
       interval = setInterval(countdown, 100);
@@ -96,6 +110,9 @@ document.body.addEventListener("mouseup", function() {
     if (interval) {
     clearInterval(interval);
     }
+    // EDIT
+    playbackRate = 1;
+    // END EDIT
     seconds = secondsSetup;
     progressBarSeconds = progressBarSecondsSetup;
     interval = setInterval(countdown, 100);
@@ -109,6 +126,9 @@ document.body.addEventListener("mouseup", function() {
       if (interval) {
       clearInterval(interval);
       }
+      // EDIT
+      playbackRate = 1;
+      // END EDIT
       seconds = secondsSetup;
       progressBarSeconds = progressBarSecondsSetup;
       interval = setInterval(countdown, 100);
@@ -135,6 +155,9 @@ if (event.key === " " || event.key === "Enter") {
     if (interval) {
     clearInterval(interval);
     }
+    // EDIT
+    playbackRate = 1;
+    // END EDIT
     seconds = secondsSetup;
     progressBarSeconds = progressBarSecondsSetup;
     interval = setInterval(countdown, 100);
@@ -148,6 +171,9 @@ if (event.key === " " || event.key === "Enter") {
       if (interval) {
       clearInterval(interval);
       }
+      // EDIT
+      playbackRate = 1;
+      // END EDIT
       seconds = secondsSetup;
       progressBarSeconds = progressBarSecondsSetup;
       interval = setInterval(countdown, 100);
@@ -161,6 +187,9 @@ if (event.key === " " || event.key === "Enter") {
   }
 } else if (event.key === "Escape") {
   clearInterval(interval);
+  // EDIT
+  playbackRate = 1;
+  // END EDIT
   seconds = secondsSetup;
   progressBarSeconds = progressBarSecondsSetup;
   document.getElementById("timer").innerHTML = "30";
@@ -188,6 +217,9 @@ body.addEventListener("touchstart", (event) => {
       if (gestureDuration >= 2000) {
         clearInterval(gestureInterval);
         clearInterval(interval);
+        // EDIT
+        playbackRate = 1;
+        // END EDIT
         seconds = secondsSetup;
         progressBarSeconds = progressBarSecondsSetup;
         document.getElementById("timer").innerHTML = "30";

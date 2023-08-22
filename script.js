@@ -12,7 +12,6 @@ let gestureStartTime;
 function countdown() {
   seconds -= 0.1;
   document.getElementById("progress").style.width = (seconds / progressBarSeconds) * 100 + "%";
-  console.log(seconds);
   
   if (seconds <= 9.9) {
     document.getElementById("timer").innerHTML = seconds.toFixed(1);

@@ -1,4 +1,4 @@
-const secondsSetup = 11.9;
+const secondsSetup = 30.9;
 const progressBarSecondsSetup = 30.9;
 const buttonSecondsSetup = 60.9;
 const buttonProgressBarSecondsSetup = 60.9;
@@ -185,7 +185,7 @@ body.addEventListener("touchstart", (event) => {
       const currentTime = new Date().getTime();
       const gestureDuration = currentTime - gestureStartTime;
 
-      if (gestureDuration >= 500) {
+      if (gestureDuration >= 100) {
         clearInterval(gestureInterval);
         clearInterval(interval);
         seconds = secondsSetup;
@@ -196,7 +196,7 @@ body.addEventListener("touchstart", (event) => {
         document.getElementById("fastTickingClock").pause();
         disableSixtySecondsButton();
       }
-    }, 500);
+    }, 100);
   }
 });
 

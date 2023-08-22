@@ -1,4 +1,4 @@
-const secondsSetup = 11.9;
+const secondsSetup = 30.9;
 const progressBarSecondsSetup = 30.9;
 const buttonSecondsSetup = 60.9;
 const buttonProgressBarSecondsSetup = 60.9;
